@@ -1,0 +1,46 @@
+# ⚠ Archivos de configuración sensibles
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# ⚙ Dependencias de Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 🗑 Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# 🏗 Archivos de compilación o caché
+dist/
+build/
+.cache/
+*.log
+logs/
+*.out
+*.pid
+*.seed
+*.lock
+*.bak
+*.swp
+*.swo
+*.swn
+
+# 📦 Archivos de bases de datos locales o configuraciones temporales
+*.sqlite
+*.sqlite3
+*.db
+*.pdb
+*.ldb
+*.tgz
+*.tar.gz
+
+# 🚀 Directorios de herramientas de despliegue
+.vscode/
+.idea/
+.eslintcache
+coverage/
