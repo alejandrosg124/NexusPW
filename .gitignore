@@ -1,0 +1,8 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+
+# Build files
+dist/
+.vscode/
+.DS_Store
