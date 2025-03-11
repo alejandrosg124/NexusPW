@@ -72,9 +72,9 @@ const Home = () => {
           <div className={styles.grid}>
             {products.map(product => (
               <div key={product.id} className={styles.card}>
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <p><strong>${product.price}</strong></p>
+                <h3>{product.nombre}</h3>
+                <p>{product.descriptcion}</p>
+                <p><strong>${product.precio}</strong></p>
               </div>
             ))}
           </div>
