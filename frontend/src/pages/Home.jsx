@@ -4,16 +4,23 @@ import styles from './Home.module.css';
 const Home = () => {
 
   const [products, setProducts] = useState([]); // Estado para almacenar los productos
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // Obtener los datos de los productos desde la API
     const fetchProducts = async () => {
       try {
         const response = await fetch('http://localhost:3000/api/products'); // Cambia la URL según tu backend
+        
+        if(!response.ok) {
+          throw new Error(`Error ${response.status}: No se pudo obtener los productos`);
+        }
+        
         const data = await response.json();
         setProducts(data); // Actualiza el estado con los productos
+        setError(null);
       } catch (error) {
-        console.error('Error al cargar los productos:', error);
+        setError(err.message);
       }
     };
 
@@ -29,14 +36,23 @@ const Home = () => {
 
         <div className={styles.categories}>
           <h3>Categorías</h3>
+          
           <ul>
             <li>
-              <input type="checkbox" id="accesorios" />
-              <label htmlFor="accesorios">Accesorios</label>
+              <input type="checkbox" id="gorras" />
+              <label htmlFor="gorras">Gorras</label>
+            </li>
+            <li>
+              <input type="checkbox" id="camisetas" />
+              <label htmlFor="camisetas">Camisetas</label>
             </li>
             <li>
               <input type="checkbox" id="vaporizadores" />
               <label htmlFor="vaporizadores">Vaporizadores</label>
+            </li>
+            <li>
+              <input type="checkbox" id="accesorios" />
+              <label htmlFor="accesorios">Accesorios</label>
             </li>
           </ul>
         </div>
@@ -45,6 +61,14 @@ const Home = () => {
       <main className={styles.mainContent}>
         <section className={styles.section}>
           <h2>Promos</h2>
+
+          {/* mensaje de error si la API falla */}
+          {error && <p className={styles.error}>{error}</p>}
+
+          {/* mensaje si no hay productos */}
+          {!error && products.length === 0 && <p>No hay productos disponibles.</p>}
+
+
           <div className={styles.grid}>
             {products.map(product => (
               <div key={product.id} className={styles.card}>

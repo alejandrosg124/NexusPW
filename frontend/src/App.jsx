@@ -8,7 +8,7 @@ function App() {
         <Router>
             <Navbar />
             
-            <div style={{ paddingTop: '4rem' }}> 
+            <div> 
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="*" element={<h1>Página no encontrada</h1>} />
