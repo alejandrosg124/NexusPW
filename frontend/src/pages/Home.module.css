@@ -7,27 +7,29 @@
 .mainContent {
     flex-grow: 1;
     padding: 2rem;
-    background-color: rgb(189, 189, 189);
+    background-color: rgb(255, 255, 255);
 }
 
 .sidebar {
     width: 150px;
     padding: 1rem;
-    background-color: #636363;
+    background-color: #dedede;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   }
   
   .shippingInfo {
     margin-bottom: 2rem;
+    color:#000000
   }
   
   .location {
     font-weight: bold;
-    color: #d07ed0; /* Púrpura */
+    color: #000000; /* Púrpura */
   }
   
   .categories {
     margin-bottom: 2rem;
+    color:#000000
   }
   
   .categories h3 {
@@ -59,6 +61,11 @@
   .section h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: #000000;
+  }
+
+  .section p {
+    color: #000000;
   }
   
   .grid {
