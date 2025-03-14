@@ -18,7 +18,7 @@
   }
   
   .shippingInfo {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color:#000000
   }
   
@@ -27,6 +27,16 @@
     color: #000000; /* Púrpura */
   }
   
+.botonIg {
+  padding: "10px 20px";
+  font-size: "10x";
+  background-color: #4a154b;
+  color: "white";
+  border: "none";
+  border-radius: "5px";
+  cursor: "pointer";
+}
+
   .categories {
     margin-bottom: 2rem;
     color:#000000

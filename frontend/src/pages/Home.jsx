@@ -27,12 +27,20 @@ const Home = () => {
     fetchProducts();
   }, []);
 
+  const handleClick = () => {
+    window.open("https://www.instagram.com/nexusfusionka/", "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className={styles.container}>
       <aside className={styles.sidebar}>
         <div className={styles.shippingInfo}>
           <p>Por ahora solo tenemos envíos a <span className={styles.location}>Cali, Colombia</span></p>
         </div>
+
+        <button onClick={handleClick} className={styles.botonIg}>
+          🔗 Instagram
+        </button>
 
         <div className={styles.categories}>
           <h3>Categorías</h3>
@@ -54,13 +62,17 @@ const Home = () => {
               <input type="checkbox" id="accesorios" />
               <label htmlFor="accesorios">Accesorios</label>
             </li>
+            <li>
+              <input type="checkbox" id="billeteras" />
+              <label htmlFor="billeteras">Billeteras</label>
+            </li>
           </ul>
         </div>
       </aside>
 
       <main className={styles.mainContent}>
         <section className={styles.section}>
-          <h2>Promos</h2>
+          <h2>Catálogo</h2>
 
           {/* mensaje de error si la API falla */}
           {error && <p className={styles.error}>{error}</p>}
