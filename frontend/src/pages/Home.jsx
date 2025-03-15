@@ -10,7 +10,7 @@ const Home = () => {
     // Obtener los datos de los productos desde la API
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/products'); // Cambia la URL según tu backend
+        const response = await fetch('http://localhost:3000/api/productos'); // Cambia la URL según tu backend
         
         if(!response.ok) {
           throw new Error(`Error ${response.status}: No se pudo obtener los productos`);
@@ -82,11 +82,12 @@ const Home = () => {
 
 
           <div className={styles.grid}>
-            {products.map(product => (
-              <div key={product.id} className={styles.card}>
-                <h3>{product.nombre}</h3>
-                <p>{product.descriptcion}</p>
-                <p><strong>${product.precio}</strong></p>
+            {products.map(producto => (
+              <div key={producto.id} className={styles.card}>
+                <img src={producto.fotos} alt={producto.nombre} className={styles.fotoProducto}/>
+                <h3 className={styles.nombreProducto}>{producto.nombre}</h3>
+                <p>{producto.descripcion}</p>
+                <h3 className={styles.precioProducto}><strong>${producto.precio}</strong></h3>
               </div>
             ))}
           </div>
