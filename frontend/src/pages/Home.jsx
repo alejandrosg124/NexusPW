@@ -52,16 +52,8 @@ const Home = () => {
               <label htmlFor="camisetas">Camisetas</label>
             </li>
             <li>
-              <input type="checkbox" id="vaporizadores" />
-              <label htmlFor="vaporizadores">Vaporizadores</label>
-            </li>
-            <li>
               <input type="checkbox" id="accesorios" />
               <label htmlFor="accesorios">Accesorios</label>
-            </li>
-            <li>
-              <input type="checkbox" id="billeteras" />
-              <label htmlFor="billeteras">Billeteras</label>
             </li>
           </ul>
         </div>
@@ -83,7 +75,6 @@ const Home = () => {
               <div key={producto.id} className={styles.card}>
                 <img src={producto.fotos} alt={producto.nombre} className={styles.fotoProducto}/>
                 <h3 className={styles.nombreProducto}>{producto.nombre}</h3>
-                <p>{producto.descripcion}</p>
                 <h3 className={styles.precioProducto}><strong>${producto.precio}</strong></h3>
               </div>
             ))}
