@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ⚠ Archivos de configuración sensibles
+.env
+.env.local
+.env.development
+.env.production
+.env.test

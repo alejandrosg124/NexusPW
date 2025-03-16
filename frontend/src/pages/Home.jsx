@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { fetchData } from '../api';
 import styles from './Home.module.css';
+
+const API_URL = import.meta.env.VITE_API_URL; // Importa la variable de entorno
 
 const Home = () => {
 
@@ -7,20 +10,14 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Obtener los datos de los productos desde la API
     const fetchProducts = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/productos'); // Cambia la URL según tu backend
-        
-        if(!response.ok) {
-          throw new Error(`Error ${response.status}: No se pudo obtener los productos`);
-        }
-        
-        const data = await response.json();
-        setProducts(data); // Actualiza el estado con los productos
+      const data = await fetchData("api/productos");
+
+      if (data) {
+        setProducts(data);
         setError(null);
-      } catch (error) {
-        setError(err.message);
+      } else {
+        setError("No se pudieron obtener los productos");
       }
     };
 
