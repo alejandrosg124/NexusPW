@@ -31,6 +31,9 @@ const DetalleProducto = () => {
     return(
         <>
         <h1>{nombre}</h1>
+        <p>{descripcion}</p>
+        <img src={producto.fotos} alt={producto.nombre} />
+        <p>{producto.precio}</p>
         </>
     )
 }
