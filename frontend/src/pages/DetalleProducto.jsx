@@ -6,6 +6,7 @@ import Carousel from '../utils/Carousel';
 const DetalleProducto = () => {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProducto = async () => {
@@ -13,17 +14,19 @@ const DetalleProducto = () => {
             const data = await fetchData(`api/productos/${id}`);
             if (data) {
                 setProducto(data);
+                setError(null);
               } else {
-                console.error("Producto no encontrado");
+                setError("Producto no encontrado");
               }
             } catch (error) {
-              console.error("Error al obtener el producto:", error);
+                setError("Error al obtener el producto: " + error.message);
             }
         };
     
         fetchProducto();
     }, [id]);
 
+    if (error) return <p>{error}</p>;
     if (!producto) return <p>Cargando...</p>;
 
 

@@ -1,4 +1,3 @@
-import { fetchData } from '../../../frontend/src/api.js';
 import pool from '../config/db.js';
 
 const ProductService = {
