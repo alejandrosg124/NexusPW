@@ -3,8 +3,6 @@ import { fetchData } from '../api';
 import styles from './Home.module.css';
 import { Link } from 'react-router-dom';
 
-const API_URL = import.meta.env.VITE_API_URL; // Importa la variable de entorno
-
 const Home = () => {
 
   const [products, setProducts] = useState([]); // Estado para almacenar los productos
