@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { fetchData } from '../api';
 import { useParams } from "react-router-dom";
 import { fetchData } from '../api';
+
+const API_URL = import.meta.env.VITE_API_URL; // Importa la variable de entorno
 
 const DetalleProducto = () => {
     const { id } = useParams();
