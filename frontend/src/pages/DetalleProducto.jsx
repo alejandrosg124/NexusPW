@@ -1,41 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from '../api';
 import { useParams } from "react-router-dom";
-import { fetchData } from '../api';
-
-const API_URL = import.meta.env.VITE_API_URL; // Importa la variable de entorno
+import Carousel from '../utils/Carousel';
 
 const DetalleProducto = () => {
     const { id } = useParams();
-    const [producto, setProducto] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [producto, setProducto] = useState(null);
 
     useEffect(() => {
         const fetchProducto = async () => {
-            try {
-                const response = await fetchData (api/productos/{ id });
-                const data = await response.json();
-                if (data) {
-                    setProducto(data);
-                } else {
-                    console.log("No existe el producto");
-                }
-            } catch {
-                setError("Error al cargar el producto");
-
-            } finally {
-                setLoading(false);
+          try {
+            const data = await fetchData(`api/productos/${id}`);
+            if (data) {
+                setProducto(data);
+              } else {
+                console.error("Producto no encontrado");
+              }
+            } catch (error) {
+              console.error("Error al obtener el producto:", error);
             }
         };
-
+    
         fetchProducto();
     }, [id]);
+
+    if (!producto) return <p>Cargando...</p>;
+
+
     return(
         <>
-        <h1>{nombre}</h1>
-        <p>{descripcion}</p>
-        <img src={producto.fotos} alt={producto.nombre} />
+        <h1>{producto.nombre}</h1>
+        <p>{producto.descripcion}</p>
+        {producto.fotos && <Carousel images={producto.fotos} />}
         <p>{producto.precio}</p>
         </>
     )

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from '../api';
 import styles from './Home.module.css';
+import { Link } from 'react-router-dom';
 
 const API_URL = import.meta.env.VITE_API_URL; // Importa la variable de entorno
 
@@ -72,11 +73,11 @@ const Home = () => {
 
           <div className={styles.grid}>
             {products.map(producto => (
-              <div key={producto.id} className={styles.card}>
+              <Link to={`/producto/${producto.id}`} key={producto.id} className={styles.card}>
                 <img src={producto.fotos} alt={producto.nombre} className={styles.fotoProducto}/>
                 <h3 className={styles.nombreProducto}>{producto.nombre}</h3>
                 <h3 className={styles.precioProducto}><strong>${producto.precio}</strong></h3>
-              </div>
+              </Link>
             ))}
           </div>
         </section>

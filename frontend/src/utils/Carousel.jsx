@@ -2,29 +2,28 @@ import { useState } from "react";
 import { fetchData } from '../api';
 import { motion, AnimatePresence } from "framer-motion";
 
-const API_URL = import.meta.env.VITE_API_URL; // Importa la variable de entorno
-
-const Carousel = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+const Carousel = ({images}) => {
+    const [index, setIndex] = useState(0);
   
-    const handleNext = () => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex + 1 === images.length ? 0 : prevIndex + 1
-      );
+    const siguienteImagen = () => {
+      setIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
-    const handlePrevious = () => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
-      );
+    const anteriorImagen = () => {
+      setIndex((prevIndex) =>
+        (prevIndex - 1 + images.length) % images.length);
     };
-    const handleDotClick = (index) => {
-      setCurrentIndex(index);
-    }};
-
-    return(
-        <>
-        
-        </>
-    )
+    
+  return(
+      <>
+        <div style={{textAlign: "center"}}>
+          <button onClick={anteriorImagen}>⬅️</button>
+          <img src={images[index]} alt={`Imagen ${index + 1}`}
+              style={{ width: "300px", height: "200px", objectFit: "cover", margin: "10px" }}
+          />
+        </div>
+      </>
+  )
+  
+  };
 
 export default Carousel;
