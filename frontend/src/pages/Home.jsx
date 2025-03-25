@@ -40,19 +40,10 @@ const Home = () => {
 
         <div className={styles.categories}>
           <h3>Categorías</h3>
-          
           <ul>
             <li>
-              <input type="checkbox" id="gorras" />
+              <input type="checkbox" id="gorras" checked readOnly />
               <label htmlFor="gorras">Gorras</label>
-            </li>
-            <li>
-              <input type="checkbox" id="camisetas" />
-              <label htmlFor="camisetas">Camisetas</label>
-            </li>
-            <li>
-              <input type="checkbox" id="accesorios" />
-              <label htmlFor="accesorios">Accesorios</label>
             </li>
           </ul>
         </div>
@@ -60,7 +51,7 @@ const Home = () => {
 
       <main className={styles.mainContent}>
         <section className={styles.section}>
-          <h2>Catálogo</h2>
+          <h2 className={styles.title}>Lo más destacado</h2>
 
           {/* mensaje de error si la API falla */}
           {error && <p className={styles.error}>{error}</p>}
@@ -74,7 +65,7 @@ const Home = () => {
               <Link to={`/producto/${producto.id}`} key={producto.id} className={styles.card}>
                 <img src={producto.fotos} alt={producto.nombre} className={styles.fotoProducto}/>
                 <h3 className={styles.nombreProducto}>{producto.nombre}</h3>
-                <h3 className={styles.precioProducto}><strong>${producto.precio}</strong></h3>
+                <p className={styles.precioProducto}>${producto.precio}</p>
               </Link>
             ))}
           </div>
