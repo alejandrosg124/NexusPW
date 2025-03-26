@@ -3,6 +3,7 @@ import { fetchData } from '../api';
 import { useParams } from "react-router-dom";
 import Carousel from '../utils/Carousel';
 import styles from './DetalleProducto.module.css';
+import { Link } from 'react-router-dom';
 
 const DetalleProducto = () => {
     const { id } = useParams();
@@ -33,7 +34,7 @@ const DetalleProducto = () => {
     }, [id]);
 
     if (error) return <p>{error}</p>;
-    if (!producto) return <p>Cargando...</p>;
+    if (!producto) return <div className={styles.loading}></div>;
 
 
     return (
@@ -53,11 +54,11 @@ const DetalleProducto = () => {
               <h2 className={styles.tituloMasArticulos}>Más artículos como este</h2>
               <div className={styles.listaProductos}>
                   {productosSimilares.map((prod) => (
-                      <div key={prod.id} className={styles.itemProducto}>
-                          <img className={styles.imagenMiniatura} src={prod.fotos} alt={prod.nombre} />
-                          <p className={styles.nombreProducto}>{prod.nombre}</p>
-                          <p className={styles.precioProducto}>${prod.precio}</p>
-                      </div>
+                    <Link to={`/producto/${prod.id}`} key={prod.id} className={styles.itemProducto}>
+                        <img className={styles.imagenMiniatura} src={prod.fotos} alt={prod.nombre} />
+                        <p className={styles.nombreProducto}>{prod.nombre}</p>
+                        <p className={styles.precioProducto}>${prod.precio}</p>
+                    </Link>
                   ))}
               </div>
           </div>
